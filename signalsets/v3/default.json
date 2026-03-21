@@ -19,25 +19,13 @@
   "signals": [
     {"id": "VSS", "path": "Movement", "fmt": { "len": 8, "max": 255, "unit": "kilometersPerHour" }, "name": "Vehicle speed", "suggestedMetric": "speed"}
   ]},
-{ "hdr": "DB33", "cmd": {"01": "0F"}, "freq": 5, "dbg": true,
-  "signals": [
-    {"id": "IAT", "path": "Engine", "fmt": { "len": 8, "max": 215, "min": -40, "add": -40, "unit": "celsius" }, "name": "Intake air temperature"}
-  ]},
 { "hdr": "DB33", "cmd": {"01": "10"}, "freq": 1, "dbg": true,
   "signals": [
     {"id": "MAF", "path": "Engine", "fmt": { "len": 16, "max": 655.35, "div": 100, "unit": "gramsPerSecond" }, "name": "MAF air flow rate", "suggestedMetric": "massAirFlow"}
   ]},
-{ "hdr": "DB33", "cmd": {"01": "1F"}, "freq": 60, "dbg": true,
-  "signals": [
-    {"id": "RUNTM", "path": "Engine", "fmt": { "len": 16, "max": 65535, "unit": "seconds" }, "name": "Engine run time since start"}
-  ]},
 { "hdr": "DB33", "cmd": {"01": "2F"}, "freq": 30, "dbg": true,
   "signals": [
     {"id": "FLI", "path": "Fuel", "fmt": { "len": 8, "max": 100, "mul": 100, "div": 255, "unit": "percent" }, "name": "Fuel tank level", "suggestedMetric": "fuelTankLevel"}
-  ]},
-{ "hdr": "DB33", "cmd": {"01": "31"}, "freq": 3600, "dbg": true,
-  "signals": [
-    {"id": "CLR_DIST", "path": "DTCs", "fmt": { "len": 16, "max": 65535, "unit": "kilometers" }, "name": "Distance since DTCs cleared", "suggestedMetric": "distanceSinceDTCsCleared"}
   ]},
 { "hdr": "DB33", "cmd": {"01": "34"}, "freq": 2, "dbg": true,
   "signals": [
@@ -47,18 +35,6 @@
 { "hdr": "DB33", "cmd": {"01": "42"}, "freq": 30, "dbg": true,
   "signals": [
     {"id": "VPWR", "path": "Battery", "fmt": { "len": 16, "max": 65.535, "div": 1000, "unit": "volts" }, "name": "Control module voltage", "suggestedMetric": "starterBatteryVoltage"}
-  ]},
-{ "hdr": "DB33", "cmd": {"01": "45"}, "freq": 1, "dbg": true,
-  "signals": [
-    {"id": "TP_R", "path": "Engine", "fmt": { "len": 8, "max": 100, "mul": 100, "div": 255, "unit": "percent" }, "name": "Relative throttle position", "suggestedMetric": "throttlePosition"}
-  ]},
-{ "hdr": "DB33", "cmd": {"01": "49"}, "freq": 1, "dbg": true,
-  "signals": [
-    {"id": "APP_D", "path": "Engine", "fmt": { "len": 8, "max": 100, "mul": 100, "div": 255, "unit": "percent" }, "name": "Accelerator pedal position D"}
-  ]},
-{ "hdr": "DB33", "cmd": {"01": "4A"}, "freq": 1, "dbg": true,
-  "signals": [
-    {"id": "APP_E", "path": "Engine", "fmt": { "len": 8, "max": 100, "mul": 100, "div": 255, "unit": "percent" }, "name": "Accelerator pedal position E"}
   ]},
 { "hdr": "DB33", "cmd": {"01": "7C"}, "freq": 5, "dbg": true,
   "signals": [
@@ -73,34 +49,6 @@
   "signals": [
     {"id": "JEEP_GEAR_DESIRED", "path": "Transmission", "fmt": {          "len": 4, "max": 15, "unit": "scalar" }, "name": "Desired gear"},
     {"id": "JEEP_GEAR_CURRENT", "path": "Transmission", "fmt": {"bix": 4, "len": 4, "max": 15, "unit": "scalar" }, "name": "Current gear"}
-  ]},
-{ "hdr": "DA18", "rax": "18", "cmd": {"22": "1018"}, "freq": 2, "dbg": true,
-  "signals": [
-    {"id": "RENEGADE_TCM_TORQUE", "path": "Transmission", "fmt": { "len": 16, "max": 1000, "min": -500, "add": -500, "unit": "newtonMeters" }, "name": "TCM reported torque"}
-  ]},
-{ "hdr": "DA18", "rax": "18", "cmd": {"22": "2102"}, "freq": 1, "dbg": true,
-  "signals": [
-    {"id": "RENEGADE_GEARBOX_RPM", "path": "Transmission", "fmt": { "len": 16, "max": 16383, "div": 4, "unit": "rpm" }, "name": "Gearbox output speed"}
-  ]},
-{ "hdr": "DA18", "rax": "18", "cmd": {"22": "2B1B"}, "freq": 1, "dbg": true,
-  "signals": [
-    {"id": "RENEGADE_WSS_RR", "path": "Movement", "fmt": { "len": 16, "max": 300, "unit": "kilometersPerHour" }, "name": "Rear right wheel speed"}
-  ]},
-{ "hdr": "DA18", "rax": "18", "cmd": {"22": "2B1C"}, "freq": 1, "dbg": true,
-  "signals": [
-    {"id": "RENEGADE_WSS_RL", "path": "Movement", "fmt": { "len": 16, "max": 300, "unit": "kilometersPerHour" }, "name": "Rear left wheel speed"}
-  ]},
-{ "hdr": "DA18", "rax": "18", "cmd": {"22": "2B1D"}, "freq": 1, "dbg": true,
-  "signals": [
-    {"id": "RENEGADE_WSS_FR", "path": "Movement", "fmt": { "len": 16, "max": 300, "unit": "kilometersPerHour" }, "name": "Front right wheel speed"}
-  ]},
-{ "hdr": "DA18", "rax": "18", "cmd": {"22": "2B1E"}, "freq": 1, "dbg": true,
-  "signals": [
-    {"id": "RENEGADE_WSS_FL", "path": "Movement", "fmt": { "len": 16, "max": 300, "unit": "kilometersPerHour" }, "name": "Front left wheel speed"}
-  ]},
-{ "hdr": "DA40", "rax": "40", "cmd": {"22": "1004"}, "freq": 30, "dbg": true,
-  "signals": [
-    {"id": "RENEGADE_BATT_V_BCM", "path": "Battery", "fmt": { "len": 8, "max": 25, "div": 10, "unit": "volts" }, "name": "Battery voltage, BCM"}
   ]}
 ]
 }
