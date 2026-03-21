@@ -10,8 +10,8 @@
   ]},
 { "hdr": "DA18", "rax": "18", "cmd": {"22": "051A"}, "freq": 1, "dbg": true,
   "signals": [
-    {"id": "JEEP_GEAR_DESIRED", "path": "Transmission", "fmt": {          "len": 4, "max": 15, "unit": "scalar" }, "name": "Desired gear"},
-    {"id": "JEEP_GEAR_CURRENT", "path": "Transmission", "fmt": {"bix": 4, "len": 4, "max": 15, "unit": "scalar" }, "name": "Current gear"}
+    {"id": "JEEP_GEAR_DESIRED", "path": "Transmission", "fmt": {          "len": 4, "max": 15, "map": {"0": "P/N", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "13": "D", "14": "E", "15": "R"} }, "name": "Desired gear"},
+    {"id": "JEEP_GEAR_CURRENT", "path": "Transmission", "fmt": {"bix": 4, "len": 4, "max": 15, "map": {"0": "P/N", "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "13": "D", "14": "E", "15": "R"} }, "name": "Current gear"}
   ]}
 ]
 }
