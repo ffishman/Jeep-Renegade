@@ -52,10 +52,6 @@
   "signals": [
     {"id": "TP_R", "path": "Engine", "fmt": { "len": 8, "max": 100, "mul": 100, "div": 255, "unit": "percent" }, "name": "Relative throttle position", "suggestedMetric": "throttlePosition"}
   ]},
-{ "hdr": "DB33", "cmd": {"01": "46"}, "freq": 60, "dbg": true,
-  "signals": [
-    {"id": "AAT", "path": "Climate", "fmt": { "len": 8, "max": 215, "min": -40, "add": -40, "unit": "celsius" }, "name": "Ambient air temperature"}
-  ]},
 { "hdr": "DB33", "cmd": {"01": "49"}, "freq": 1, "dbg": true,
   "signals": [
     {"id": "APP_D", "path": "Engine", "fmt": { "len": 8, "max": 100, "mul": 100, "div": 255, "unit": "percent" }, "name": "Accelerator pedal position D"}
@@ -63,10 +59,6 @@
 { "hdr": "DB33", "cmd": {"01": "4A"}, "freq": 1, "dbg": true,
   "signals": [
     {"id": "APP_E", "path": "Engine", "fmt": { "len": 8, "max": 100, "mul": 100, "div": 255, "unit": "percent" }, "name": "Accelerator pedal position E"}
-  ]},
-{ "hdr": "DB33", "cmd": {"01": "5E"}, "freq": 2, "dbg": true,
-  "signals": [
-    {"id": "FUEL_RATE", "path": "Fuel", "fmt": { "len": 16, "max": 3276.75, "div": 20, "unit": "litersPerHour" }, "name": "Engine fuel rate", "suggestedMetric": "fuelRate"}
   ]},
 { "hdr": "DB33", "cmd": {"01": "7C"}, "freq": 5, "dbg": true,
   "signals": [
