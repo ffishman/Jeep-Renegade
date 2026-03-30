@@ -1,0 +1,7 @@
+# Air Temp ADC — DA10 DID 190D
+# Formula: A*256+B mV
+# Source: discovery v3.3 (2026-03-24, idle)
+- cmd:
+    "22": "190D"
+  rsp:
+    "62190D73BC": {}

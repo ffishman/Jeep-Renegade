@@ -1,0 +1,7 @@
+# DeSOx Events Total — DA10 DID 391D
+# Formula: A*256+B 
+# Source: discovery v3.3 (2026-03-24, idle)
+- cmd:
+    "22": "391D"
+  rsp:
+    "62391D061A": {}

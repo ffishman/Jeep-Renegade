@@ -1,0 +1,7 @@
+# HC Mass Catalyst — DA10 DID 3901
+# Formula: (A*16M+B*64K+C*256+D)/10000 g
+# Source: discovery v3.3 (2026-03-24, idle)
+- cmd:
+    "22": "3901"
+  rsp:
+    "623901000564E5": {}

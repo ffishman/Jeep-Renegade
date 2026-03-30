@@ -1,0 +1,7 @@
+# Boost Target — DA10 DID 1959
+# Formula: A*256+B mbar
+# Source: discovery v3.3 (2026-03-24, idle)
+- cmd:
+    "22": "1959"
+  rsp:
+    "6219598438": {}

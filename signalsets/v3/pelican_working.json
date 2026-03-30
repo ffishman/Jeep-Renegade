@@ -1,0 +1,111 @@
+{ "commands": [
+
+{ "hdr": "DB33", "cmd": {"01": "04"}, "freq": 1, "dbgfilter": { "to": 2018, "from": 2020 },
+  "signals": [
+    {"id": "RENEGADE_LOAD_PCT", "path": "Engine", "fmt": { "len": 8, "max": 100, "mul": 100, "div": 255, "unit": "percent" }, "name": "Engine load"}
+  ]},
+
+{ "hdr": "DB33", "cmd": {"01": "05"}, "freq": 5, "dbgfilter": { "to": 2018, "from": 2020 },
+  "signals": [
+    {"id": "RENEGADE_ECT", "path": "Engine", "fmt": { "len": 8, "max": 215, "min": -40, "add": -40, "unit": "celsius" }, "name": "Coolant temperature"}
+  ]},
+
+{ "hdr": "DB33", "cmd": {"01": "0B"}, "freq": 1, "dbgfilter": { "to": 2018, "from": 2020 },
+  "signals": [
+    {"id": "RENEGADE_MAP", "path": "Engine", "fmt": { "len": 8, "max": 255, "unit": "kilopascal" }, "name": "Intake manifold pressure"}
+  ]},
+
+{ "hdr": "DB33", "cmd": {"01": "0C"}, "freq": 1, "dbgfilter": { "to": 2018, "from": 2020 },
+  "signals": [
+    {"id": "RENEGADE_RPM", "path": "Engine", "fmt": { "len": 16, "max": 8000, "div": 4, "unit": "rpm" }, "name": "Engine RPM"}
+  ]},
+
+{ "hdr": "DB33", "cmd": {"01": "0D"}, "freq": 1, "dbgfilter": { "to": 2018, "from": 2020 },
+  "signals": [
+    {"id": "RENEGADE_VSS", "path": "Movement", "fmt": { "len": 8, "max": 255, "unit": "kilometersPerHour" }, "name": "Vehicle speed", "suggestedMetric": "speed"}
+  ]},
+
+{ "hdr": "DB33", "cmd": {"01": "10"}, "freq": 1, "dbgfilter": { "to": 2018, "from": 2020 },
+  "signals": [
+    {"id": "RENEGADE_MAF", "path": "Engine", "fmt": { "len": 16, "max": 655, "div": 100, "unit": "gramsPerSecond" }, "name": "MAF air flow rate"}
+  ]},
+
+{ "hdr": "DB33", "cmd": {"01": "2F"}, "freq": 30, "dbgfilter": { "to": 2018, "from": 2020 },
+  "signals": [
+    {"id": "RENEGADE_FUEL_LVL", "path": "Fuel", "fmt": { "len": 8, "max": 100, "mul": 100, "div": 255, "unit": "percent" }, "name": "Fuel level"}
+  ]},
+
+{ "hdr": "DB33", "cmd": {"01": "34"}, "freq": 2, "dbgfilter": { "to": 2018, "from": 2020 },
+  "signals": [
+    {"id": "RENEGADE_LAMBDA",  "path": "Engine", "fmt": {          "len": 16, "max": 2,   "div": 32768, "unit": "scalar" }, "name": "Lambda (equivalence ratio)"},
+    {"id": "RENEGADE_O2_CURR", "path": "Engine", "fmt": {"bix": 16, "len": 16, "max": 128, "min": -128, "div": 256, "add": -128, "unit": "scalar" }, "name": "O2 sensor current (mA)"}
+  ]},
+
+{ "hdr": "DB33", "cmd": {"01": "42"}, "freq": 30, "dbgfilter": { "to": 2018, "from": 2020 },
+  "signals": [
+    {"id": "RENEGADE_VPWR", "path": "Battery", "fmt": { "len": 16, "max": 20, "div": 1000, "unit": "volts" }, "name": "Control module voltage"}
+  ]},
+
+{ "hdr": "DB33", "cmd": {"01": "7C"}, "freq": 5, "dbgfilter": { "to": 2018, "from": 2020 },
+  "signals": [
+    {"id": "RENEGADE_DPF_TEMP1", "path": "Emissions", "fmt": {"bix": 8,  "len": 16, "max": 900, "min": -40, "div": 10, "add": -40, "unit": "celsius" }, "name": "DPF temperature sensor 1"},
+    {"id": "RENEGADE_DPF_TEMP2", "path": "Emissions", "fmt": {"bix": 24, "len": 16, "max": 900, "min": -40, "div": 10, "add": -40, "unit": "celsius" }, "name": "DPF temperature sensor 2"}
+  ]},
+
+{ "hdr": "DA18", "rax": "18", "cmd": {"22": "04FE"}, "freq": 5, "dbgfilter": { "to": 2018, "from": 2020 },
+  "signals": [
+    {"id": "RENEGADE_ATF_T", "path": "Transmission", "fmt": { "len": 8, "max": 215, "min": -40, "add": -40, "unit": "celsius" }, "name": "Transmission fluid temperature"}
+  ]},
+
+{ "hdr": "DA18", "rax": "18", "cmd": {"22": "051A"}, "freq": 1, "dbgfilter": { "to": 2014, "years": [2016, 2017, 2020], "from": 2022 },
+  "signals": [
+    {"id": "JEEP_GEAR_DESIRED",  "path": "Transmission", "fmt": {          "len": 4, "max": 15, "unit": "scalar" }, "name": "Desired gear"},
+    {"id": "JEEP_GEAR_CURRENT", "path": "Transmission", "fmt": {"bix": 4, "len": 4, "max": 15, "unit": "scalar" }, "name": "Current gear"}
+  ]},
+
+{ "hdr": "DA18", "rax": "18", "cmd": {"22": "1018"}, "freq": 2, "dbgfilter": { "to": 2018, "from": 2020 },
+  "signals": [
+    {"id": "RENEGADE_TCM_TORQUE", "path": "Transmission", "fmt": { "len": 16, "max": 1000, "min": -500, "add": -500, "unit": "newtonMeters" }, "name": "TCM reported torque"}
+  ]},
+
+{ "hdr": "DA18", "rax": "18", "fcm1": true, "cmd": {"22": "2024"}, "freq": 86400, "dbgfilter": { "to": 2014, "years": [2016, 2017, 2020, 2022, 2023], "from": 2025 },
+  "signals": [
+    {"id": "JEEP_TIRE_SIZE", "path": "Tires", "fmt": {"bix": 64, "len": 16, "max": 65535, "unit": "millimeters" }, "name": "Tire size"}
+  ]},
+
+{ "hdr": "DA18", "rax": "18", "cmd": {"22": "2102"}, "freq": 1, "dbgfilter": { "to": 2018, "from": 2020 },
+  "signals": [
+    {"id": "RENEGADE_GEARBOX_RPM", "path": "Transmission", "fmt": { "len": 16, "max": 16383, "div": 4, "unit": "rpm" }, "name": "Gearbox output speed"}
+  ]},
+
+{ "hdr": "DA18", "rax": "18", "cmd": {"22": "2B1B"}, "freq": 1, "dbgfilter": { "to": 2018, "from": 2020 },
+  "signals": [
+    {"id": "RENEGADE_WSS_RR", "path": "Movement", "fmt": { "len": 16, "max": 300, "div": 16, "unit": "kilometersPerHour" }, "name": "Rear right wheel speed"}
+  ]},
+
+{ "hdr": "DA18", "rax": "18", "cmd": {"22": "2B1C"}, "freq": 1, "dbgfilter": { "to": 2018, "from": 2020 },
+  "signals": [
+    {"id": "RENEGADE_WSS_RL", "path": "Movement", "fmt": { "len": 16, "max": 300, "div": 16, "unit": "kilometersPerHour" }, "name": "Rear left wheel speed"}
+  ]},
+
+{ "hdr": "DA18", "rax": "18", "cmd": {"22": "2B1D"}, "freq": 1, "dbgfilter": { "to": 2018, "from": 2020 },
+  "signals": [
+    {"id": "RENEGADE_WSS_FR", "path": "Movement", "fmt": { "len": 16, "max": 300, "div": 16, "unit": "kilometersPerHour" }, "name": "Front right wheel speed"}
+  ]},
+
+{ "hdr": "DA18", "rax": "18", "cmd": {"22": "2B1E"}, "freq": 1, "dbgfilter": { "to": 2018, "from": 2020 },
+  "signals": [
+    {"id": "RENEGADE_WSS_FL", "path": "Movement", "fmt": { "len": 16, "max": 300, "div": 16, "unit": "kilometersPerHour" }, "name": "Front left wheel speed"}
+  ]},
+
+{ "hdr": "DA18", "rax": "18", "cmd": {"22": "F158"}, "freq": 86400, "dbgfilter": { "to": 2014, "years": [2016, 2017, 2020], "from": 2022 },
+  "signals": [
+    {"id": "JEEP_MODEL_YEAR", "path": "Details", "fmt": { "len": 8, "max": 2225, "add": 2000, "unit": "scalar" }, "name": "Model year"}
+  ]},
+
+{ "hdr": "DA40", "rax": "40", "cmd": {"22": "1004"}, "freq": 30, "dbgfilter": { "to": 2018, "from": 2020 },
+  "signals": [
+    {"id": "RENEGADE_BATT_V_BCM", "path": "Battery", "fmt": { "len": 8, "max": 25, "div": 10, "unit": "volts" }, "name": "Battery voltage (BCM)"}
+  ]}
+
+]}

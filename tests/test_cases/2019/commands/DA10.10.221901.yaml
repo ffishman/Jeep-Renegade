@@ -1,0 +1,7 @@
+# Fuel Temp ADC — DA10 DID 1901
+# Formula: A*256+B mV
+# Source: discovery v3.3 (2026-03-24, idle)
+- cmd:
+    "22": "1901"
+  rsp:
+    "6219016590": {}

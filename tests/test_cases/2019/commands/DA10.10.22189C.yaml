@@ -1,0 +1,7 @@
+# Intake Manifold Temp ADC — DA10 DID 189C
+# Formula: A*256+B mV
+# Source: discovery v3.3 (2026-03-24, idle)
+- cmd:
+    "22": "189C"
+  rsp:
+    "62189C869A": {}

@@ -1,0 +1,7 @@
+# Forced Regen State -- DA10 DID 18EC
+# Formula: A 
+# Source: discovery v3.3 (2026-03-24, idle)
+- cmd:
+    "22": "18EC"
+  rsp:
+    "6218EC00": {}
