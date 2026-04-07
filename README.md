@@ -76,23 +76,27 @@ These signals exist in [OBDb/Jeep-Renegade](https://github.com/OBDb/Jeep-Renegad
 | 2024 | Tire size | Static config, not telemetry |
 | F158 | Model year | Static config, not telemetry |
 
-## Gasoline vs Diesel Variants
+## Variants and Compatibility
 
-The Jeep Renegade uses **29-bit CAN (protocol 7) on all variants** — gasoline and diesel share the same CAN addressing scheme (DA10 for ECM, DA18 for TCM).
+This signalset was **tested and validated on a 2019 diesel 2.0 MultiJet II (Brazil)** only. Behavior on gasoline/flex variants has not been tested by the author.
 
-| Market | Gasoline | Diesel |
-|--------|----------|--------|
+### What we know
+
+- All Renegade variants use **29-bit CAN (protocol 7)** with ECM at DA10 and TCM at DA18.
+- OBDb test cases from other contributors show that MY2015 and MY2020 diesel vehicles also respond to DA10 DIDs (partially). MY2018, MY2021 and MY2024 have no DA10 test data.
+- The OBDb pipeline aggregates all variants into the make-level repo ([OBDb/Jeep](https://github.com/OBDb/Jeep)). Unsupported commands fail silently (NRC or NO DATA).
+
+### Engine options by market
+
+| Market | Gasoline / Flex | Diesel |
+|--------|----------------|--------|
 | US | 2.4L Tigershark, 1.3L Turbo | Not available |
 | Europe | 1.0L FireFly, 1.3L Turbo Multiair | 1.6L MultiJet II, 2.0L MultiJet II |
 | Brazil | 1.8L E.torQ Flex, 1.3L Turbo Flex | 2.0L MultiJet II |
 
-The ECM at DA10 responds to different DIDs depending on the engine:
-- **Diesel ECM** (Bosch EDC17): responds to diesel-specific DIDs (DPF, VGT, swirl, rail pressure, fuel corrections, etc.)
-- **Gasoline ECM**: responds to generic DIDs (1002, 1003) but returns NRC for diesel-specific DIDs
+### Related vehicles
 
-This signalset is diesel-specific. Gasoline vehicles will ignore the diesel DIDs (NRC or NO DATA). The OBDb pipeline aggregates all variants into the make-level repo ([OBDb/Jeep](https://github.com/OBDb/Jeep)) — incompatible commands fail silently.
-
-Other vehicles with the same 2.0 MultiJet II + ZF 9HP48 platform (same DIDs expected): Jeep Compass, Fiat Toro, Ram 1500 (Brazil market).
+Other vehicles share the 2.0 MultiJet II + ZF 9HP48 powertrain and are expected to support the same diesel DIDs: Jeep Compass, Fiat Toro, Ram 1500 (Brazil/Europe markets).
 
 ## PRs to Upstream
 
