@@ -1,11 +1,11 @@
 # Jeep Renegade — Diesel Signalset (Fork)
 
-Fork of [OBDb/Jeep-Renegade](https://github.com/OBDb/Jeep-Renegade) focused on the **2.0 MultiJet II diesel** variant (Europe/Brazil).
+Fork of [OBDb/Jeep-Renegade](https://github.com/OBDb/Jeep-Renegade) focused on the **2.0 MultiJet II diesel** variant.
 
 ## Vehicle
 
 - **Model:** 2019 Jeep Renegade Trailhawk (BU/520, facelift)
-- **Engine:** 2.0 MultiJet II (VM Motori), 170 hp, Euro 5
+- **Engine:** 2.0 MultiJet II (VM Motori), 170 hp
 - **Transmission:** ZF 9HP48 9-speed automatic
 - **Market:** Brazil (Goiana plant, WMI 988)
 - **CAN:** 29-bit 500 kbps (ISO 15765-4), protocol 7
@@ -17,7 +17,7 @@ Fork of [OBDb/Jeep-Renegade](https://github.com/OBDb/Jeep-Renegade) focused on t
 | 0x10 | DA10 | ECM | Bosch EDC17 (0281031204) | Extended session required (`din: "03"`), ~5s warmup |
 | 0x18 | DA18 | TCM | ZF ES11-1029 | Instant response, no session needed |
 | 0x40 | DA40 | BCM | Magneti Marelli BC521K | Battery voltage |
-| — | DB33 | Broadcast | OBD-II Mode 01 | DPF temperatures (PID 7C) |
+| -- | DB33 | Broadcast | OBD-II Mode 01 | DPF temperatures (PID 7C) |
 
 ## Signalset Coverage (46 commands)
 
@@ -49,13 +49,15 @@ FCA diesel ECUs use specific patterns for data encoding:
 
 | Type | Formula | DIDs |
 |------|---------|------|
-| Temperature | `raw * 0.02 - 40` C | 1003, 18DE, 1900, 1935, 193F, 3808, 3915, 3917 |
+| Temperature | `raw * 0.02 - 40` C | 18DE, 1900, 1935, 193F, 3808, 3915, 3917 |
 | Signed offset | `(raw - 32768) / N` | 189B (N=100), 18E2 (N=10), 195A (N=10) |
 | VGT position | `raw * 100 / 65535` % | 189F, 18A0 |
 | Fuel corrections | `int16(raw) / 100` mg/str | 3800-3803 |
 | Soot | `raw * 1000 / 65535` % | 18E4 |
+| Lambda | `raw / 1000` | 18ED |
+| M-Prop | `raw * 3 / 1000` % | 18D0 |
 | Wheel speed | `raw / 16` km/h | 2B1B-2B1E |
-| Battery | `raw / 2000` V (ECU), `raw / 10` V (BCM) | 1955, 1004 |
+| Battery (BCM) | `raw / 10` V | 1004 |
 | Rail pressure | `raw / 20` bar | 1946, 1947 |
 | Distance (3-byte) | `(A*65536 + B*256 + C) / 10` km | 3807 |
 
@@ -74,14 +76,23 @@ These signals exist in [OBDb/Jeep-Renegade](https://github.com/OBDb/Jeep-Renegad
 | 2024 | Tire size | Static config, not telemetry |
 | F158 | Model year | Static config, not telemetry |
 
-## Gas vs Diesel
+## Gasoline vs Diesel Variants
 
-The Jeep Renegade exists in gasoline (US/Brazil) and diesel (Europe/Brazil) variants with different ECU hardware:
+The Jeep Renegade uses **29-bit CAN (protocol 7) on all variants** — gasoline and diesel share the same CAN addressing scheme (DA10 for ECM, DA18 for TCM).
 
-- **Gasoline** (2.4L Tigershark / 1.3L Turbo Flex): 11-bit CAN, ECM at 7E0, TCM at 7E1
-- **Diesel** (2.0 MultiJet II): 29-bit CAN, ECM at DA10, TCM at DA18
+| Market | Gasoline | Diesel |
+|--------|----------|--------|
+| US | 2.4L Tigershark, 1.3L Turbo | Not available |
+| Europe | 1.0L FireFly, 1.3L Turbo Multiair | 1.6L MultiJet II, 2.0L MultiJet II |
+| Brazil | 1.8L E.torQ Flex, 1.3L Turbo Flex | 2.0L MultiJet II |
 
-This signalset is diesel-specific. Gasoline vehicles will not respond to DA10 commands. The OBDb pipeline aggregates both variants into the make-level repo ([OBDb/Jeep](https://github.com/OBDb/Jeep)) — incompatible commands fail silently with NO DATA.
+The ECM at DA10 responds to different DIDs depending on the engine:
+- **Diesel ECM** (Bosch EDC17): responds to diesel-specific DIDs (DPF, VGT, swirl, rail pressure, fuel corrections, etc.)
+- **Gasoline ECM**: responds to generic DIDs (1002, 1003) but returns NRC for diesel-specific DIDs
+
+This signalset is diesel-specific. Gasoline vehicles will ignore the diesel DIDs (NRC or NO DATA). The OBDb pipeline aggregates all variants into the make-level repo ([OBDb/Jeep](https://github.com/OBDb/Jeep)) — incompatible commands fail silently.
+
+Other vehicles with the same 2.0 MultiJet II + ZF 9HP48 platform (same DIDs expected): Jeep Compass, Fiat Toro, Ram 1500 (Brazil market).
 
 ## PRs to Upstream
 
@@ -91,3 +102,13 @@ This signalset is diesel-specific. Gasoline vehicles will not respond to DA10 co
 | [#115](https://github.com/OBDb/Jeep-Renegade/pull/115) | Merged | Add `din: "03"` for Extended Diagnostic Session |
 | [#116](https://github.com/OBDb/Jeep-Renegade/pull/116) | Closed | Wheel speed div=16 (superseded by #121) |
 | [#121](https://github.com/OBDb/Jeep-Renegade/pull/121) | Open | Cleanup: fix formulas, remove duplicates (54 -> 46 cmds) |
+
+## Sources
+
+- **OBDb project:** [github.com/OBDb](https://github.com/OBDb) — schema, signalset format, CI/CD
+- **OBDb schema (signals.json):** [github.com/OBDb/.schemas](https://github.com/OBDb/.schemas) — valid units, filterObject, formatter
+- **Jeep Renegade specs:** [Wikipedia](https://en.wikipedia.org/wiki/Jeep_Renegade), [autoevolution](https://www.autoevolution.com/cars/jeep-renegade-2018.html)
+- **2019 facelift press release:** [Stellantis Media](https://www.media.stellantis.com/em-en/jeep/press/new-2019-jeep-renegade)
+- **ECU identification:** AlfaOBD diagnostic software (device_id 15463, variant MARELLI8F3_CAN)
+- **Formula validation:** Live CAN data collected via OBDLink MX+ (STN2255), cross-checked against AlfaOBD and MultiEcuScan parameter databases
+- **Adapter behavior (warmup, ATCRA):** Empirical testing documented in [Clutch Discord](https://discord.gg/clutch) contributions
