@@ -24,10 +24,6 @@
   "signals": [
     {"id": "RENEGADE_REGEN_INTERRUPTED", "path": "Emissions", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "DPF regen interrupted count"}
   ]},
-{ "hdr": "DA10", "rax": "10", "din": "03", "cmd": {"22": "18AE"}, "freq": 3600,
-  "signals": [
-    {"id": "RENEGADE_REGEN_CONSEC_INTERRUPTED", "path": "Emissions", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Consecutive interrupted DPF regens"}
-  ]},
 { "hdr": "DA10", "rax": "10", "din": "03", "cmd": {"22": "18D0"}, "freq": 1,
   "signals": [
     {"id": "RENEGADE_MPROP_CMD", "path": "Engine", "fmt": { "len": 16, "max": 100, "mul": 3, "div": 1000, "unit": "percent" }, "name": "M-Prop injection command"}
