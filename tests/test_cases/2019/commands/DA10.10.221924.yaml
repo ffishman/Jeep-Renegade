@@ -1,0 +1,7 @@
+# Throttle Target -- DA10 DID 1924
+# Formula: (A*256+B)*0.1525902/100 percent
+# Source: discovery v3.3 (2026-03-24, idle)
+- cmd:
+    "22": "1924"
+  rsp:
+    "6219240000": {}

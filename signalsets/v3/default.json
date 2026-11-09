@@ -126,7 +126,7 @@
   ]},
 { "hdr": "DA10", "rax": "10", "din": "03", "cmd": {"22": "3813"}, "freq": 3600,
   "signals": [
-    {"id": "RENEGADE_OIL_DEGRAD", "path": "Engine", "fmt": { "len": 16, "max": 100, "mul": 100, "div": 65535, "unit": "percent" }, "name": "Engine oil degradation", "suggestedMetric": "engineLoad"}
+    {"id": "RENEGADE_OIL_LIFE", "path": "Engine", "fmt": { "len": 16, "max": 100, "mul": 100, "div": 65535, "unit": "percent" }, "name": "Engine oil life remaining"}
   ]},
 { "hdr": "DA10", "rax": "10", "din": "03", "cmd": {"22": "3912"}, "freq": 3600,
   "signals": [

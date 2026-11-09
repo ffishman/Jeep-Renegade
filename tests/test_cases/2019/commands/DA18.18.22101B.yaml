@@ -1,0 +1,7 @@
+# Crankshaft Torque -- DA18 DID 101B
+# Formula: (A*256+B)-500 Nm
+# Source: discovery v3.3 (2026-03-24, idle)
+- cmd:
+    "22": "101B"
+  rsp:
+    "62101B021B": {}

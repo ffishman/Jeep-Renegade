@@ -1,0 +1,7 @@
+# Lambda Upstream O2 -- DA10 DID 388A
+# Formula: (A*256+B)/1000 lambda
+# Source: discovery v3.3 (2026-03-24, idle)
+- cmd:
+    "22": "388A"
+  rsp:
+    "62388A0C1F": {}

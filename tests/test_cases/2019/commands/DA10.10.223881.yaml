@@ -1,0 +1,7 @@
+# Lambda Heater I -- DA10 DID 3881
+# Formula: (A*256+B)/10000-3.2768 mA
+# Source: discovery v3.3 (2026-03-24, idle)
+- cmd:
+    "22": "3881"
+  rsp:
+    "623881CE41": {}

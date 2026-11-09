@@ -1,0 +1,7 @@
+# Turbo Press Cmd -- DA10 DID 189E
+# Formula: (A*256+B)/100-327.68 percent
+# Source: discovery v3.3 (2026-03-24, idle)
+- cmd:
+    "22": "189E"
+  rsp:
+    "62189E8132": {}
